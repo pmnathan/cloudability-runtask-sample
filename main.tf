@@ -87,13 +87,14 @@ resource "aws_route_table_association" "public" {
 # This EC2 instance is missing the 'cost-center' tag, which should
 # cause your Cloudability policy check to fail.
 resource "aws_instance" "test_vm" {
+  count                  = 1
   ami                    = "ami-0ff8a91507f77f867" # Amazon Linux AMI (us-east-1)
   instance_type          = "t2.xlarge"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
 
   tags = {
-    Name        = "Cloudability-Run-Task-Test"
+    Name        = "TechXchangeDemo"
     Environment = "testing"
     // Notice: The 'cost-center' tag is missing!
   }
