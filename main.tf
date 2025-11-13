@@ -89,7 +89,7 @@ resource "aws_route_table_association" "public" {
 resource "aws_instance" "test_vm" {
   count                  = 1
   ami                    = "ami-0ff8a91507f77f867" # Amazon Linux AMI (us-east-1)
-  instance_type          = "t2.large"
+  instance_type          = "t2.2xLarge"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
 
